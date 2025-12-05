@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+
+<div class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">
+                <%= selectedCategory %> Products
+            </h1>
+            <p class="text-gray-600">Showing <%= products.length %> products</p>
+        </div>
+
+        <% if (products.length > 0) { %>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <% products.forEach(product => { %>
+                    <%- include('../partials/productCard', { product }) %>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="text-center py-16 bg-white rounded-lg shadow-sm">
+                <i class="fas fa-inbox text-6xl text-gray-300 mb-4"></i>
+                <p class="text-gray-600 text-lg">No products found in this category.</p>
+                <a href="/products" class="btn-primary inline-flex items-center mt-6 px-6 py-2 text-white font-bold rounded-lg">
+                    View All Products
+                </a>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

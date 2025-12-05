@@ -1,0 +1,47 @@
+<div class="product-card bg-white rounded-lg overflow-hidden">
+    <div class="relative overflow-hidden bg-gray-100 h-48 flex items-center justify-center group">
+        <img src="<%= product.image %>" alt="<%= product.name %>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+        <% if (product.discount > 0) { %>
+            <div class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                <%= product.discount %>% OFF
+            </div>
+        <% } %>
+        <% if (!product.inStock) { %>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <span class="text-white font-bold text-lg">Out of Stock</span>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="p-4">
+        <p class="text-xs text-blue-600 font-semibold mb-1 uppercase tracking-wide"><%= product.category %></p>
+        <h3 class="font-bold text-gray-800 mb-2 line-clamp-2 text-sm"><%= product.name %></h3>
+        <p class="text-gray-600 text-xs mb-3 line-clamp-2"><%= product.description %></p>
+
+        <div class="flex items-center gap-2 mb-3">
+            <div class="flex text-yellow-400">
+                <% for (let i = 0; i < Math.floor(product.rating); i++) { %>
+                    <i class="fas fa-star text-xs"></i>
+                <% } %>
+                <% if (product.rating % 1 !== 0) { %>
+                    <i class="fas fa-star-half-alt text-xs"></i>
+                <% } %>
+            </div>
+            <span class="text-xs text-gray-500">(<%= product.reviews %>)</span>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-baseline gap-2">
+                <span class="text-lg font-bold text-gray-900">$<%= product.price.toFixed(2) %></span>
+                <% if (product.originalPrice) { %>
+                    <span class="text-sm text-gray-400 line-through">$<%= product.originalPrice.toFixed(2) %></span>
+                <% } %>
+            </div>
+        </div>
+
+        <button class="btn-primary w-full text-white font-semibold py-2 px-4 rounded-lg <%= product.inStock ? '' : 'opacity-50 cursor-not-allowed' %>" <%= product.inStock ? '' : 'disabled' %>>
+            <i class="fas fa-shopping-cart mr-2"></i>
+            Add to Cart
+        </button>
+    </div>
+</div>

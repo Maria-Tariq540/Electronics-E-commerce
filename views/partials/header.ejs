@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'ElectronoX - Premium Electronics' %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0052cc 0%, #0039a6 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
+        }
+
+        .category-banner {
+            background: linear-gradient(135deg, var(--color-start) 0%, var(--color-end) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 82, 204, 0.15);
+            border-color: #0052cc;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-3xl text-blue-600"></i>
+                <span class="text-2xl font-bold text-blue-600">ElectronoX</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 flex-1 ml-12">
+                <a href="/" class="text-gray-700 hover:text-blue-600 font-medium transition">Home</a>
+                <a href="/products" class="text-gray-700 hover:text-blue-600 font-medium transition">Shop</a>
+                <a href="#categories" class="text-gray-700 hover:text-blue-600 font-medium transition">Categories</a>
+                <a href="#deals" class="text-gray-700 hover:text-blue-600 font-medium transition">Deals</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center bg-gray-100 rounded-lg px-3 py-2">
+                    <input type="text" placeholder="Search..." class="bg-transparent outline-none w-32 text-sm text-gray-700" />
+                    <button class="text-gray-500 hover:text-blue-600 transition">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-lg transition">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </button>
+                <button class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden pb-4 border-t border-gray-200 space-y-2">
+            <a href="/" class="block py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-3 rounded transition">Home</a>
+            <a href="/products" class="block py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-3 rounded transition">Shop</a>
+            <a href="#categories" class="block py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-3 rounded transition">Categories</a>
+            <a href="#deals" class="block py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-3 rounded transition">Deals</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-3 rounded transition">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+</script>
